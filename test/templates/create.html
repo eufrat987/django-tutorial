@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    create new list
+{% endblock %}
+
+{% block content %}
+
+Create Page
+
+<form method="post" action="." class="form-group">
+
+    {% csrf_token %}
+    
+    <div class="input-group">
+
+        <div class="input-group-prepend">
+            
+        <button type="submit" class="btn btn-success">Create</button>
+        </div>
+        {{form.name}}
+
+    </div>
+
+</form>
+
+{% endblock %}
