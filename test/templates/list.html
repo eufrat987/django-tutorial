@@ -11,24 +11,39 @@
     <form method="post" action="#">
         {% csrf_token %}
 
-        <ul>
+       
+
             {% for item in ls.item_set.all %}
-            <li>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+
                 {% if item.complete %}
-                 <input type="checkbox" name="c{{item.id}}" checked> {{item.text}}
+                <input type="checkbox" name="c{{item.id}}" checked> 
                 {% else %}
-                <input type="checkbox" name="c{{item.id}}" > {{item.text}} 
+                <input type="checkbox" name="c{{item.id}}" > 
                 {% endif %}
-        
-            </li>
-        
-            {% endfor %} 
-        </ul>
+                </div>
+
+            </div>
+                    <input type="text" value="{{item.text}}" class="form-control">
+              
+               
+            </div>
+            {% endfor %}
 
 
-        <button type="submit" name="save" value='save'> Save </button> 
-        <input type="text" name="new">
-        <button type="submit" name="newItem" value="clicked" > New item </button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="submit" name="newItem" value="clicked" class="btn btn-success"> New item </button>
+           
+              </div>
+              <input type="text" name="new">
+            
+      
+        </div>
+
+        <button type="submit" name="save" value='save' class="btn btn-success"> Save </button> 
 
     </form>
 
