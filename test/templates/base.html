@@ -61,9 +61,19 @@
                 <div class="col-8">
                     <h1 class="mt-2">  My Site</h1>
                     <hr class="mt-0  mb-4"> </hr>
-                    {% block content %}
-                    <p> Default content </p>  
-                  {% endblock %}
+
+                    {% block auth %}
+                        {% if user.is_authenticated %}
+                            {% block content %}
+                                <p> Default content </p>  
+                            {% endblock %}
+                        {% else %}
+                            <p> Please  <a href="/login"> login in </a>  </p>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block noAuth %}
+                    {% endblock %}
 
                 </div>
            

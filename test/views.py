@@ -7,6 +7,10 @@ from .forms import CreateNewList
 
 def index(request, id):
     ls = ToDoList.objects.get(id=id)
+    if not ls in request.user.todolist_set.all(): 
+        return HttpResponse('err')
+
+
 
     print (request.POST)
     if request.method == 'POST':
@@ -38,12 +42,13 @@ def home(request):
     return render(request, 'home.html', {})
 
 def create(request):
+    u = request.user 
     if request.method == 'POST':
         form = CreateNewList(request.POST)
         if form.is_valid():
             n = form.cleaned_data['name']
-            t = ToDoList(name = n) 
-            t.save()
+            t = u.todolist_set.create(name = n)
+            u.save()
             return HttpResponseRedirect('/%i' % t.id)
 
     else:
