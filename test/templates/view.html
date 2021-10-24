@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    View
+{% endblock %}
+
+{% block content %}
+
+{% for todolist in user.todolist_set.all %}
+
+<p>  <a href="/{{ todolist.id }}">  {{todolist.name}} </a>   </p>
+
+{% endfor %}
+
+
+{% endblock %}

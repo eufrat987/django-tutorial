@@ -55,3 +55,6 @@ def create(request):
         form= CreateNewList()
     return render(request, 'create.html', {'form': form})
 
+def view(request):
+    return render(request, 'view.html', {})
+
